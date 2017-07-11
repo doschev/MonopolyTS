@@ -1,3 +1,5 @@
+import {Dice} from "app/dice/dice";
+
 export class TestDice implements Dice {
     public rollOne: number;
     public rollTwo: number;

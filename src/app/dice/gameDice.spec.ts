@@ -1,4 +1,4 @@
-import {GameDice} from "app/gameDice";
+import {GameDice} from "app/dice/gameDice";
 
 describe("Game Dice", () => {
     it("max value is twelve", () => {
