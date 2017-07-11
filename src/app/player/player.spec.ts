@@ -2,9 +2,8 @@ import {Player} from "app/player/player";
 
 describe("Player", () => {
 
-    it("Name is BRIAN", ()=>{
-        const player = new Player("BRIAN");
-        console.log(player.getName());
-        expect (player.getName()).toBe("BRIAN");
+    it("Name is TOPHAT", ()=>{
+        const player = new Player("TOPHAT");
+        expect (player.getName()).toBe("TOPHAT");
     });
 });
