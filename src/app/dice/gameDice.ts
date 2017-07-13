@@ -1,7 +1,7 @@
 import {Dice} from "app/dice/dice";
 
 export class GameDice implements Dice{
-    
+   
     private minValue: number = 1;
     private maxValue: number = 6;
 
