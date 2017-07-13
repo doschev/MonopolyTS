@@ -1,7 +1,8 @@
 import {GameDice} from "app/dice/gameDice";
 
 describe("Game Dice", () => {
-    it("max value is twelve", () => {
+    it("max value is 12", () => {
+
         const dice = new GameDice();
 
         for (let i = 0; i < 1000; i++) {
@@ -10,12 +11,12 @@ describe("Game Dice", () => {
         }
     });
 
-    it("min value is one", () => {
+    it("min value is 2", () => {
         const dice = new GameDice();
 
         for (let i = 0; i < 1000; i++) {
             const roll = dice.roll();
-            expect(roll).toBeGreaterThanOrEqual(1);
+            expect(roll).toBeGreaterThanOrEqual(2);
         }
     });
 });
