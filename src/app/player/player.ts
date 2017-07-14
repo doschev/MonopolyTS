@@ -1,11 +1,17 @@
 export class Player {
-    private name: string;
+    public name: string;
+    public balance: number;
 
-    constructor (name: string){
+    constructor (name: string, balance: number){
         this.name = name;
+        this.balance = balance;
     }
 
-    public getName(){
-        return this.name;
+    public deposit(amount: number){
+        this.balance =+ amount;
+    }
+
+    public withdraw(amount: number){
+        this.balance =- amount;
     }
 }
