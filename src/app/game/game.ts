@@ -1,7 +1,6 @@
 import {Player} from "app/player/player";
 
 export class Game {
-
     private players: Player[];
 
     constructor (players: Player[]){

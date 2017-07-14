@@ -7,8 +7,8 @@ describe("Game", () => {
         let players: Player[] = [new Player("HORSE",0),new Player("CAR",0)];
         const game = new Game(players);
         
-        expect (players.find(x => x.name === "HORSE").name).toBe("HORSE");
-        expect (players.find(x => x.name === "CAR").name).toBe("CAR");
+        expect (players.find(x => x.getName() === "HORSE").getName()).toBe("HORSE");
+        expect (players.find(x => x.getName() === "CAR").getName()).toBe("CAR");
     });
 
     it("Try to create a game with < 2. When attempting to play the game, it will fail.", ()=>{
@@ -65,10 +65,10 @@ describe("Game", () => {
         for (var _i = 0; _i < 100; _i++) {       
             const game = new Game(players);    
 
-            if (players[0].name == "HORSE"){
+            if (players[0].getName() == "HORSE"){
                     horseFirst++;
             }   
-            else if (players[0].name == "CAR"){
+            else if (players[0].getName() == "CAR"){
                     carFirst++;
             }   
         } 
@@ -76,4 +76,39 @@ describe("Game", () => {
         expect(carFirst).toBeGreaterThan(1);
         expect(horseFirst + carFirst).toBe(100);
     });
+
+    it ("Create a game and play, verify that the total rounds was 20 and that each player played 20 rounds.", ()=>{
+        let players: Player[] = [new Player("HORSE",0), new Player("CAR",0),new Player("TRUCK",0)];
+        const game = new Game(players);    
+
+        for (var _i = 0; _i < 20; _i++) {       
+            for (var player of game.getPlayers()){
+                player.takeTurn();
+            }
+         } 
+
+        for (var player of game.getPlayers()){
+            expect(player.getTurns()).toBe(20);
+        }
+    });
+
+    it ("Create a game and play, verify that in every round the order of the players remained the same.", ()=>{
+        const game = new Game([new Player("HORSE",0), new Player("CAR",0),new Player("TRUCK",0)]);    
+        let holdPlayers = Object.assign({}, game.getPlayers());
+
+        for (var _i = 0; _i < 20; _i++) {       
+            for (var player of game.getPlayers()){
+                player.takeTurn();
+            }
+            let i : number = 0
+            for (var player of game.getPlayers()){
+                expect(player.getName()).toBe(holdPlayers[i].getName());
+                i++;
+            }
+        }      
+    });
+
+
+
+
 });
